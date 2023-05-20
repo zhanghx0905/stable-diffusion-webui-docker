@@ -12,8 +12,8 @@ WORKDIR /app
 
 RUN pip install xformers && \
     pip install torch torchvision --index-url https://download.pytorch.org/whl/cu117 && \
-    python launch.py --exit --skip-torch-cuda-test
-RUN pip cache purge
+    python launch.py --exit --skip-torch-cuda-test && \
+    pip cache purge
 
 EXPOSE 7860
 
