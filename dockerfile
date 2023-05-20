@@ -6,12 +6,12 @@ RUN adduser --disabled-password --gecos '' user
 RUN mkdir /app && chown -R user:user /app
 USER user
 
-RUN git clone https://github.com/zhanghx0905/stable-diffusion-webui.git /app
+RUN git clone https://github.com/AUTOMATIC1111/stable-diffusion-webui.git /app
 
 WORKDIR /app
 
-RUN pip install torch torchvision --index-url https://download.pytorch.org/whl/cu117 && \
-    pip install xformers && \
+RUN pip install xformers && \
+    pip install torch torchvision --index-url https://download.pytorch.org/whl/cu117 && \
     python launch.py --exit --skip-torch-cuda-test
 RUN pip cache purge
 
