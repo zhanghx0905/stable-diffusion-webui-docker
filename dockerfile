@@ -10,7 +10,7 @@ RUN git clone https://github.com/AUTOMATIC1111/stable-diffusion-webui.git /app
 
 WORKDIR /app
 
-RUN pip install --no-deps xformers && \
+RUN pip install --no-deps xformers==0.0.19 pyre-extensions==0.0.29 && \
     pip install torch torchvision --index-url https://download.pytorch.org/whl/cu117 && \
     python launch.py --exit --skip-torch-cuda-test && \
     pip cache purge
