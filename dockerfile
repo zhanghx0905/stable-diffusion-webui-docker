@@ -6,7 +6,7 @@ RUN adduser --disabled-password --gecos '' user
 RUN mkdir /app && chown -R user:user /app
 USER user
 
-RUN git clone https://github.com/AUTOMATIC1111/stable-diffusion-webui.git /app
+RUN git clone https://github.com/zhanghx0905/stable-diffusion-webui.git /app
 
 WORKDIR /app
 
@@ -18,4 +18,4 @@ RUN pip install --no-deps xformers==0.0.19 && \
 
 EXPOSE 7860
 
-CMD python webui.py -xformers --listen --enable-insecure-extension-access --gradio-queue
+CMD python webui.py --xformers --listen --enable-insecure-extension-access --gradio-queue
