@@ -9,13 +9,14 @@ USER user
 RUN git clone https://github.com/zhanghx0905/stable-diffusion-webui.git /app
 
 WORKDIR /app
-
 RUN pip install --no-deps xformers==0.0.19 && \
-    pip install pyre-extensions==0.0.29 && \
-    pip install torch torchvision --index-url https://download.pytorch.org/whl/cu117 && \
+    pip install pyre-extensions==0.0.29
+
+RUN pip install torch torchvision --index-url https://download.pytorch.org/whl/cu117 && \
     python launch.py --exit --skip-torch-cuda-test && \
     pip cache purge
 
 EXPOSE 7860
 
-CMD python webui.py --xformers --listen --enable-insecure-extension-access --gradio-queue
+# CMD python webui.py --xformers --listen --enable-insecure-extension-access --gradio-queue
+CMD python webui.py --listen --enable-insecure-extension-access --gradio-queue
